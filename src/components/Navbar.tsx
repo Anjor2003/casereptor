@@ -26,7 +26,7 @@ const Navbar = async () => {
                 </LogoutLink>
                 {isAdmin ? (
                   <Link
-                    href="/api/auth/dashboard"
+                    href="/dashboard"
                     className={buttonVariants({
                       size: "sm",
                       variant: "ghost",
@@ -46,12 +46,11 @@ const Navbar = async () => {
               </>
             ) : (
               <>
-
                 <RegisterLink
                   className={buttonVariants({ size: "sm", variant: "ghost" })}>
                   Sing up
                 </RegisterLink>
-                <Button size="sm" variant="ghost" >
+                <Button size="sm" variant="ghost">
                   <LoginLink>Login</LoginLink>
                 </Button>
                 <div className="h-8 w-px bg-zinc-200 sm:block" />
