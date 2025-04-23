@@ -1,7 +1,7 @@
 "use client"
 
 import { CaseColor } from "@prisma/client"
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AspectRatio } from "./ui/aspect-ratio";
 import { cn } from "@/lib/utils";
 
@@ -17,6 +17,18 @@ const PhonePreview = ({
     width: 0,
     height: 0,
   });
+
+  const handleResize = () => {
+    if(!ref.current) return
+    const { width, height} = ref.current.getBoundingClientRect()
+    setRenderedDimension({width, height})
+  }
+
+  useEffect(() => {
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () =>window.removeEventListener('resize', handleResize)
+  }, [])
 
   let caseBackgroundColors = "bg-zinc-900"
   if(color == 'blue') caseBackgroundColors = "bg-blue-950"
