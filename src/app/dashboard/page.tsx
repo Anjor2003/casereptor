@@ -114,7 +114,9 @@ const Page = async () => {
               <TableRow>
                 <TableHead>Cliente</TableHead>
                 <TableHead className="hidden sm:table-cell">Estado</TableHead>
-                <TableHead className="hidden sm:table-cell">Fecha de Compra</TableHead>
+                <TableHead className="hidden sm:table-cell">
+                  Fecha de Compra
+                </TableHead>
                 <TableHead className="text-right">Cantidad</TableHead>
               </TableRow>
             </TableHeader>
@@ -130,9 +132,11 @@ const Page = async () => {
                     </div>
                   </TableCell>
                   <TableCell className="hidden sm:table-cell">
-                    <StatusDropdown/>
+                    <StatusDropdown id={order.id} orderStatus={order.status} />
                   </TableCell>
-                  <TableCell className="hidden sm:table-cell">{order.createdAt.toLocaleDateString()}</TableCell>
+                  <TableCell className="hidden sm:table-cell">
+                    {order.createdAt.toLocaleDateString()}
+                  </TableCell>
                   <TableCell className="text-right">
                     {formatPrice(order.amount)}
                   </TableCell>
