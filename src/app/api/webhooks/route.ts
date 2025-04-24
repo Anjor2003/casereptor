@@ -77,7 +77,6 @@ export async function POST(req: Request) {
         react: OrderReceivedEmail({
           orderId,
           orderDate: updatedOrder.createdAt.toLocaleDateString(),
-          // @ts-ignore
           shippingAddress: {
             name: session.customer_details!.name!,
             city: shippingAddress!.city!,
@@ -85,6 +84,8 @@ export async function POST(req: Request) {
             postalCode: shippingAddress!.postal_code!,
             street: shippingAddress!.line1!,
             state: shippingAddress!.state!,
+            id: "",
+            phoneNumber: null,
           },
         }),
       });
