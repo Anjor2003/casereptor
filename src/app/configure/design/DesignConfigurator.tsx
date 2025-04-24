@@ -42,7 +42,7 @@ const DesignConfigurator = ({
   imageDimensions,
 }: DesignConfiguratorProps) => {
   const router = useRouter();
-  const { mutate: saveConfig } = useMutation({
+  const { mutate: saveConfig, isPending } = useMutation({
     mutationKey: ["save-config"],
     mutationFn: async (args: SaveConfigArgs) => {
       await Promise.all([saveConfiguration(), _saveConfig(args)]);
@@ -352,13 +352,18 @@ const DesignConfigurator = ({
                 )}
               </p>
               <Button
-                onClick={() => saveConfig({
-                  configId,
-                  color: options.color.value,
-                  model: options.model.value,
-                  material: options.material.value,
-                  finish: options.finish.value,
-                })}
+                isLoading={isPending}
+                disabled={isPending}
+                loadingText="Guardando..."
+                onClick={() =>
+                  saveConfig({
+                    configId,
+                    color: options.color.value,
+                    model: options.model.value,
+                    material: options.material.value,
+                    finish: options.finish.value,
+                  })
+                }
                 size={"sm"}
                 className="w-fit">
                 Continue <ArrowRight className="ml-1.5 size-4 inline" />
