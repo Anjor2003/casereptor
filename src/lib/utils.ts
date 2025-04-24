@@ -45,5 +45,6 @@ export function constructMetadata({
       creator: "@anjor2003",
     },
     icons,
+    metadataBase: new URL("https://casereptor.vercel.app"),
   };
 }
